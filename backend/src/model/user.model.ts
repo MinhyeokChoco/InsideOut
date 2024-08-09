@@ -28,23 +28,23 @@ export class User extends Model {
     })
     nick_name: string
 
-    @HasMany(() => QnA, {
-        sourceKey: "nick_name",
-        foreignKey: "nick_name"
-    })
-    QnAs: QnA[];
+    // @HasMany(() => QnA, {
+    //     sourceKey: "nick_name",
+    //     foreignKey: "nick_name"
+    // })
+    // QnAs: QnA[];
 
-    @HasMany(() => Comment, {
-        sourceKey: "nick_name",
-        foreignKey: "nick_name"
-    })
-    Comments: Comment[];
+    // @HasMany(() => Comment, {
+    //     sourceKey: "nick_name",
+    //     foreignKey: "nick_name"
+    // })
+    // Comments: Comment[];
 
-    @HasMany(() => Ccomment, {
-        sourceKey: "nick_name",
-        foreignKey: "nick_name"
-    })
-    Ccomments: Ccomment[];
+    // @HasMany(() => Ccomment, {
+    //     sourceKey: "nick_name",
+    //     foreignKey: "nick_name"
+    // })
+    // Ccomments: Ccomment[];
 
 }
 

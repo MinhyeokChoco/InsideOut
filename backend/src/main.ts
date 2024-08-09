@@ -9,7 +9,8 @@ dotenv.config();
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
-  //app.use(cookieParser());
+
+  app.use(cookieParser());
 
   app.useStaticAssets(join(__dirname, '..', 'uploads'))
 

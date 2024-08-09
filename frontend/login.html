@@ -71,7 +71,6 @@
                 if (window.opener) {
 
                     window.opener.postMessage({ type: 'popupClosed', payload: { uid, upw } }, '*');
-                    window.location.reload();
                     window.close();
                 } else {
                     // 팝업이 아닌 경우

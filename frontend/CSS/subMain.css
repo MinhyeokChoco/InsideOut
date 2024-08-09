@@ -1,7 +1,5 @@
 /* 전체틀 잡아주는 div창 */
 
-
-
 @font-face {
   font-family: 'SF_HambakSnow';
   src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/SF_HambakSnow.woff') format('woff');
@@ -107,6 +105,10 @@ nav:first-child {
   top: 0;
 }
 
+#textLine {
+  background-color: #202020;
+}
+
 #textLine>span {
   color: white;
 }
@@ -129,6 +131,7 @@ nav:first-child {
 #tip {
   font-family: 'SF_HambakSnow';
   color: #eee;
+  background-color: #202020;
   font-size: 24px;
   font-weight: 100;
   border: none;
@@ -140,6 +143,7 @@ nav:first-child {
   cursor: pointer;
   font-family: 'SF_HambakSnow';
   color: #eee;
+  background-color: #202020;
   font-size: 24px;
   font-weight: 100;
   border: none;
@@ -179,6 +183,7 @@ nav:first-child {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-color: #202020;
 }
 
 #mainJoker>img {
@@ -223,15 +228,6 @@ nav:first-child {
   color: #eee;
   /* font-style: normal; */
 }
-
-
-
-
-
-
-
-
-
 
 /*////////////////////////////////////////*/
 /* 두번째 메인창으로 슬라이드 모션있는 div창 2번째임 */
@@ -535,4 +531,27 @@ nav:first-child {
 
 .hide {
   display: none;
+}
+
+#tipBtn {
+  font-family: 'SF_HambakSnow';
+  color: #eee;
+  background-color: #202020;
+  font-size: 24px;
+  font-weight: 100;
+  border: none;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+#infoBtn {
+  font-family: 'SF_HambakSnow';
+  color: #eee;
+  background-color: #202020;
+  font-size: 24px;
+  font-weight: 100;
+  border: none;
+  margin-right: 15px;
+  cursor: pointer;
+  margin: 0 auto;
 }

@@ -1,7 +1,5 @@
 import { Module } from '@nestjs/common';
 import { UploadService, WhiskytipService } from './whiskytip.service';
-import { WhiskytipController } from './whiskytip.controller';
-
 import { SequelizeModule } from '@nestjs/sequelize';
 import { whiskyTip } from 'src/whiskytip/model/whisky_Tip.model';
 import { whiskyTipComment } from 'src/whiskytip/model/whisky_Tip_Comment.model';
@@ -10,6 +8,7 @@ import { MulterModule } from '@nestjs/platform-express';
 import { InsideOutInfoModule } from 'src/inside-out-info/inside-out-info.module';
 import { InsideOutInfoService } from 'src/inside-out-info/inside-out-info.service';
 import { JwtModule, JwtService } from '@nestjs/jwt';
+import { WhiskytipController } from './whiskytip.controller';
 
 @Module({
   imports: [SequelizeModule.forFeature([whiskyTip, whiskyTipComment, whiskyTipCcomment]),

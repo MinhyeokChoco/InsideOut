@@ -190,6 +190,16 @@ body {
 }
 
 #pagination>button {
+    width: 20px;
+    height: 15px;
+    border: none;
+    font-family: "paybooc-light", sans-serif;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+    background-color: white;
+    color: black;
     cursor: pointer;
 }
 
@@ -205,4 +215,8 @@ body {
     background-color: #edbb3c;
     color: black;
     cursor: pointer;
+}
+
+.hide {
+    display: none;
 }

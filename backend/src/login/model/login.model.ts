@@ -1,5 +1,8 @@
 
 import { Column, DataType, Default, ForeignKey, HasMany, Model, Table } from "sequelize-typescript";
+import { Ccomment } from "src/model/ccomment.model";
+import { Comment } from "src/model/comment.model";
+import { QnA } from "src/model/qn-a.model";
 import { whiskyTip } from 'src/whiskytip/model/whisky_Tip.model';
 
 @Table({
@@ -41,6 +44,24 @@ export class UserSignUp extends Model {
         allowNull: false,
     })
     isAdmin: boolean
+
+    @HasMany(() => QnA, {
+        sourceKey: "nick_name",
+        foreignKey: "nick_name"
+    })
+    QnAs: QnA[];
+
+    @HasMany(() => Comment, {
+        sourceKey: "nick_name",
+        foreignKey: "nick_name"
+    })
+    Comments: Comment[];
+
+    @HasMany(() => Ccomment, {
+        sourceKey: "nick_name",
+        foreignKey: "nick_name"
+    })
+    Ccomments: Ccomment[];
 
 
 }

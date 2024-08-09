@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="../CSS/infoRead.css">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
+
 <body>
     <div class="top">
         <div class="head">
@@ -18,26 +20,26 @@
                 <textarea name="" id="writing-frame" class="writingFrame" placeholder="입력하세요"></textarea>
             </div>
             <div class="fileText">
-                
+
                 <div class="file-upload preview-image">
-                    <input type="text" class="upload-name"disabled="disabled">
-                    <label for="input-file">업로드</label> 
-                    <input type="file" id="input-file" class="upload-hidden" accept="*.jpg,*.png"> 
+                    <input type="text" class="upload-name" disabled="disabled">
+                    <label for="input-file">업로드</label>
+                    <input type="file" id="input-file" class="upload-hidden" accept="*.jpg,*.png">
                 </div>
                 <div class="textUpload">
                     <!-- <a href="./infoDetail.html"> -->
-                        <input id="submitBtn" type="button" class="upload-text" value="작성완료">
+                    <input id="submitBtn" type="button" class="upload-text" value="작성완료">
                     <!-- </a> -->
                 </div>
-                
+
             </div>
         </div>
-            
+
     </div>
 </body>
 <script>
     const _input = document.querySelector("#submitBtn");
-    _input.addEventListener("click",()=>{
+    _input.addEventListener("click", () => {
 
         post()
     })
@@ -47,26 +49,30 @@
             const inputFile = document.querySelector("#input-file");
             const uploadName = document.querySelector("#writing-frame");
             const formData = new FormData();
-            
-            formData.append("file",inputFile.files[0]);
-            formData.append("whiskey_text",uploadName.value);
+
+            formData.append("file", inputFile.files[0]);
+            formData.append("whiskey_text", uploadName.value);
             // console.log(uploadName);
-            
+
             const postex = await axios.post("http://127.0.0.1:3000/information/write", formData);
+            if (postex.status === 201) {
+                location.href = 'http://localhost:5501/frontend/HTML/infoDetail.html'
+            }
             // console.log(postex);
-            
+
             // console.log(postex.data);
         } catch (error) {
-            console.error("post 에러났어",error);
+            console.error("post 에러났어", error);
         }
     }
-const file = document.querySelector("#input-file");
-file.onchange=(el)=>{
-    // console.log(el.target.files)
-}
+    const file = document.querySelector("#input-file");
+    file.onchange = (el) => {
+        // console.log(el.target.files)
+    }
 
 
 
-    
+
 </script>
+
 </html>

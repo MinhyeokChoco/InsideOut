@@ -1,6 +1,7 @@
 import { Model, Column, Table, DataType, HasMany, ForeignKey, BelongsTo } from "sequelize-typescript";
 import { Comment } from "./comment.model";
 import { User } from "./user.model";
+import { UserSignUp } from "src/login/model/login.model";
 
 
 @Table({
@@ -27,10 +28,13 @@ export class QnA extends Model {
     })
     Comments: Comment[];
 
-    @ForeignKey(() => User)
+    @ForeignKey(() => UserSignUp)
     @Column
     nick_name: string;
 
-    @BelongsTo(() => User)
-    Users: User;
+    @BelongsTo(() => UserSignUp, {
+        foreignKey: 'nick_name',
+        targetKey: 'nick_name'
+    })
+    Users: UserSignUp;
 }

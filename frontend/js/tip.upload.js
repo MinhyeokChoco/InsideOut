@@ -50,9 +50,9 @@ tipCorrecionBtn.addEventListener("click", async (e) => {
       },
       withCredentials: true
     });
-    if (response.status) {
+    if (response.status === 200) {
       const newID = response.data.id; // 서버에서 새로운 ID를 반환한다고 가정
-      // location.href = `http://127.0.0.1:5501/frontend/html/whiskytip.check.html?id=${newID}`;
+      location.href = `http://localhost:5501/frontend/html/whiskytip.check.html?id=${newID}`;
       // location.href = "http://127.0.0.1:5501/frontend/html/whiskytip.snack.html"
       return;
     } else {
@@ -71,10 +71,3 @@ cancellationBtn.addEventListener("click", () => {
   location.href = "http://127.0.0.1:5501/frontend/html/whiskytip.snack.html";
 });
 //});
-
-
-
-
-
-
-

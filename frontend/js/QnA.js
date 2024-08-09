@@ -4,20 +4,26 @@ const maxVisibleButtons = 5; // 페이지네이션을 통해 보여줄 버튼의
 
 async function get(page = 1, search = '') {
     try {
-        const response = await axios.get('http://127.0.0.1:3000/qn-a', { // QnA 목록 데이터 요청, response에 할당
+        const response = await axios.get('http://localhost:3000/qn-a', { // QnA 목록 데이터 요청, response에 할당
             params: { // 요청 URL의 쿼리 문자열로 포함될 파라미터들
                 page: page, // 현재 페이지 번호
                 limit: limit, // 페이지당 항목 수 (제한)
                 search: search // 검색어
-            }
+            },
+            withCredentials: true
         });
 
         console.log('서버 응답 데이터', response.data);
+        const createBtn = document.getElementById('createBtn');
 
         const { results, totalPages } = response.data; // QnA 데이터에서 results, totalPages를 추출
         console.log(response);
         renderQnAList(results); // renderQnAList 함수 호출, items 매개변수에 추출한 results를 인자로 전달
         createPagination(totalPages); // createPagination 함수 호출, totalPages를 인자로 전달
+
+        if (response.data.verifiedToken) {
+            createBtn.classList.remove('hide');
+        }
 
     } catch (error) {
         console.error('QnA 목록 불러오기 실패', error);
@@ -129,3 +135,16 @@ const createBtn = document.getElementById('createBtn'); // 문의 글 작성 버
 createBtn.addEventListener('click', () => { // 문의 글 작성 클릭 시
     location.href = './create.html'; // create 페이지로 이동
 });
+
+const tip = document.getElementById("tip")
+tip.addEventListener("click", () => {
+    location.href = "http://localhost:5501/frontend/html/main.html"
+})
+
+// insideout 클릭시 메인
+
+const wrapper = document.querySelector(".wrapper")
+
+wrapper.addEventListener("click", () => {
+    location.href = "http://localhost:5501/frontend/HTML/InsideOutWhiskey.html"
+})

@@ -27,6 +27,9 @@ import { whiskyTipCcomment } from './whiskytip/model/whisky_Tip_Ccomment.model';
 import { InsideOutInfoModule } from './inside-out-info/inside-out-info.module';
 import { InsideOutInfoController } from './inside-out-info/inside-out-info.controller';
 import { QnAModule } from './qn-a/qn-a.module';
+import { QnA } from './model/qn-a.model';
+import { Comment } from './model/comment.model';
+import { Ccomment } from './model/ccomment.model';
 
 @Module({
   imports: [SequelizeModule.forRoot({
@@ -39,7 +42,7 @@ import { QnAModule } from './qn-a/qn-a.module';
     autoLoadModels: true,
     synchronize: true, // 애플리케이션 실행 했을 때 데이터베이스랑 동기화를 할 것인지 ?
     sync: { force: false }, // true 시 초기화
-    models: [UserSignUp, whiskyTip, whiskyTipComment, whiskyTipCcomment],
+    models: [UserSignUp, whiskyTip, whiskyTipComment, whiskyTipCcomment, QnA, Comment, Ccomment],
   }), LoginModule, ConfigModule.forRoot({ isGlobal: true }),
     WhiskytipModule, QnAModule, CommentModule, CcommentModule, WhiskytipModule,
   MulterModule.register({

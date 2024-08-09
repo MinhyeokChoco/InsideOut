@@ -1,6 +1,7 @@
 import { BelongsTo, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
-import { User } from "./user.model";
+// import { User } from "./user.model";
 import { Comment } from "./comment.model";
+import { UserSignUp } from "src/login/model/login.model";
 
 @Table({
     timestamps: true,
@@ -14,12 +15,15 @@ export class Ccomment extends Model {
     })
     qna_com_comment: string;
 
-    @ForeignKey(() => User)
+    @ForeignKey(() => UserSignUp)
     @Column
     nick_name: string;
 
-    @BelongsTo(() => User)
-    Users: User;
+    @BelongsTo(() => UserSignUp, {
+        foreignKey: 'nick_name',
+        targetKey: 'nick_name'
+    })
+    Users: UserSignUp;
 
     @ForeignKey(() => Comment)
     @Column

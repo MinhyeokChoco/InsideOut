@@ -3,17 +3,21 @@ import { InjectModel } from '@nestjs/sequelize';
 import { CreateQnADTO, DeleteQnADTO, UpdateQnADTO } from 'src/dto/qn-a.dto';
 import { QnA } from 'src/model/qn-a.model';
 import { Op } from 'sequelize';
+import { InsideOutInfoService } from 'src/inside-out-info/inside-out-info.service';
+import { UserSignUp } from 'src/login/model/login.model';
+
 
 @Injectable()
 export class QnAService {
     constructor(
-        @InjectModel(QnA) private readonly QnAModel: typeof QnA) { }
+        @InjectModel(QnA) private readonly QnAModel: typeof QnA,
+        private readonly insideOutInfo: InsideOutInfoService) { }
 
     // 글 작성 함수
-    async create(createQnA: CreateQnADTO) {
-        const { nick_name, qna_title, qna_content } = createQnA // 작성자, 제목, 내용
+    async create(createQnA: CreateQnADTO, name: string) {
+        const { qna_title, qna_content } = createQnA // 작성자, 제목, 내용
         return await this.QnAModel.create({
-            nick_name, qna_title, qna_content
+            qna_title, qna_content, nick_name: name
         })
     }
 
@@ -119,5 +123,10 @@ export class QnAService {
         const id = deleteQnA
         // console.log(deleteQnA)
         return this.QnAModel.destroy({ where: { id } })
+    }
+
+    tokenVerify(token: string) {
+        const data = this.insideOutInfo.verify(token)
+        return data;
     }
 }

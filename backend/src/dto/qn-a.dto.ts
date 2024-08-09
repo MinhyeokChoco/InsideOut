@@ -3,11 +3,11 @@ import { IsArray, IsNumber } from "class-validator"
 import { QnA } from "src/model/qn-a.model"
 
 export class CreateQnADTO {
-    @ApiProperty({
-        description: 'QnA 작성자',
-        type: String
-    })
-    nick_name: string
+    // @ApiProperty({
+    //     description: 'QnA 작성자',
+    //     type: String
+    // })
+    // nick_name: string
 
     @ApiProperty({
         description: 'QnA 제목',

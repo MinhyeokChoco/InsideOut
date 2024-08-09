@@ -6,15 +6,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QnA 메인</title>
     <link rel="stylesheet" href="../CSS/QnA.css">
+    <link rel="stylesheet" href="../CSS/subMain.css">
+    <!-- 폰트 -->
+    <link href="https://fonts.cdnfonts.com/css/botera-tfe" rel="stylesheet">
+    <style>
+        @import url('https://fonts.cdnfonts.com/css/botera-tfe');
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
+    <!-- 헤더 -->
+    <div id="firstMainFrame">
+        <div class="mainJokerFrame">
+            <a href="" id="mainA" alt="Mythrill" target="_blank">
+                <div class="card">
+                    <div class="wrapper">Inside Out</div>
+                </div>
+            </a>
+        </div>
+        <div class="menuWindow">
+            <nav id="textLine">
+                <div id="horizontal-underline"></div>
+                <button id="tip">Tip </button>
+                <span>|</span>
+                <a href="http://localhost:5501/frontend/HTML/infoDetail.html">Info</a>
+                <span>|</span>
+                <a href="http://localhost:5501/frontend/views/QnA.html#">Q&A</a>
+                <span>|</span>
+                <button class="login-button">login</button>
+            </nav>
+        </div>
+    </div>
+
     <!-- 문의 글 목록 -->
     <h1 class="QnA_title">QnA</h1>
     <!-- 글 작성 버튼 -->
     <div class="btnWrap">
-        <button id="createBtn">문의 글 작성</button>
+        <button id="createBtn" class="hide">문의 글 작성</button>
     </div>
     <!-- 목록 가이드 -->
     <div id="guide">
