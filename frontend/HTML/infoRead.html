@@ -54,7 +54,7 @@
             formData.append("whiskey_text", uploadName.value);
             // console.log(uploadName);
 
-            const postex = await axios.post("http://127.0.0.1:3000/information/write", formData);
+            const postex = await axios.post("http://localhost:3000/information/write", formData);
             if (postex.status === 201) {
                 location.href = 'http://localhost:5501/frontend/HTML/infoDetail.html'
             }

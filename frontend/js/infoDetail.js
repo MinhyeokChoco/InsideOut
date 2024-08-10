@@ -25,19 +25,19 @@ async function get() {
     const limitedResp = resp.slice(0, 3);
 
     // 가져온 데이터를 렌더링
-    limitedResp.forEach(e => {
+    limitedResp.forEach((e, index) => {
       const divv = document.createElement("div");
       divv.innerHTML = `    
-        <figure class="snip1283">
-        <img src="http://localhost:3000/${e.img}"data-set="${e.id}" alt="sample70">
-        <figcaption>
-        ${e.w_info}
-        </figcaption>
-        </figure> 
-        <div class="buttons">
-          <button id="ubutton" class="hide" data-set="${e.id}">correction</button>
-          <button class="dibuttn hide" data-set="${e.id}">delete</button>
-        </div>`
+      <figure class="snip1283">
+      <img src="http://localhost:3000/${e.img}"data-set="${e.id}" alt="sample70">
+      <figcaption>
+      ${e.w_info}
+      </figcaption>
+      </figure> 
+      <div class="buttons">
+      <button id="ubutton" class="ubutton hide" data-set="${e.id}">correction</button>
+      <button class="dibuttn hide" data-set="${e.id}">delete</button>
+      </div>`
 
 
       //     <div class="buttons">
@@ -45,11 +45,13 @@ async function get() {
       //     <button class="dibuttn">삭제버튼</button>
       // </div>
       inn.append(divv);
+      const updateButtons = document.querySelectorAll('.ubutton');
+      const deleteButtons = document.querySelectorAll('.dibuttn');
+      const buttonData = document.querySelectorAll('.buttons');
+      console.log(buttonData)
       if (tokenResponse.data.isAdmin === true) {
-        const updateBtn = document.querySelector('#ubutton');
-        const deleteBtn = document.querySelector('.dibuttn');
-        updateBtn.classList.remove('hide');
-        deleteBtn.classList.remove('hide');
+        updateButtons[index].classList.remove('hide');
+        deleteButtons[index].classList.remove('hide');
         btnWr.classList.remove('hide');
       }
 
@@ -59,9 +61,10 @@ async function get() {
       // <img src="./2enProject_Main_imges/토치로불하는_위스키.webp" alt="sample70"/>
     });
 
+    const updateButtons = document.querySelectorAll('.ubutton');
+    const deleteButtons = document.querySelectorAll('.dibuttn');
 
     // 수정 버튼 이벤트 리스너
-    const updateButtons = document.querySelectorAll('#ubutton');
     updateButtons.forEach(button => {
       button.addEventListener('click', (e) => {
         location.href = `./infoU.html?id=${e.target.dataset.set}`;
@@ -69,7 +72,6 @@ async function get() {
     });
 
     // 삭제 버튼 이벤트 리스너
-    const deleteButtons = document.querySelectorAll('.dibuttn');
     deleteButtons.forEach(button => {
       button.addEventListener('click', async (e) => {
 

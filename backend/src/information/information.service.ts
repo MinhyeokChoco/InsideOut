@@ -8,10 +8,10 @@ import { UpdateContent } from './dto/information.dio';
 @Injectable()
 export class InformationService {
     constructor(@InjectModel(Insideoutinfo)
-        private readonly infoLogic : typeof Insideoutinfo
-    ){}
+    private readonly infoLogic: typeof Insideoutinfo
+    ) { }
 
-    async findAll() : Promise<Insideoutinfo[]>{
+    async findAll(): Promise<Insideoutinfo[]> {
         const result = await this.infoLogic.findAll({ order: [['createdAt', 'DESC']] });
         // console.log(result);
         return result;
@@ -25,30 +25,30 @@ export class InformationService {
         return result;
     }
 
-    async create( createContent : UpdateContent, img : string) : Promise<Insideoutinfo> {
-        const { whiskey_text, whiskey_name }= createContent
-        console.log("#############################################",whiskey_text);
-        
+    async create(createContent: UpdateContent, img: string): Promise<Insideoutinfo> {
+        const { whiskey_text, whiskey_name } = createContent
+        console.log("#############################################", whiskey_text);
+
         return await this.infoLogic.create({
-            nick_name: "nick_name" , w_name:whiskey_name, w_info:whiskey_text, img
+            nick_name: "admin", w_name: whiskey_name, w_info: whiskey_text, img
         })
     }
 
-    async update(id: number, updateContent:UpdateContent, img : string): Promise<Insideoutinfo> {
+    async update(id: number, updateContent: UpdateContent, img: string): Promise<Insideoutinfo> {
         const record = await this.findOneById(id);
-        if(!record){
+        if (!record) {
             throw new Error(`ID가 ${id}인 레코드를 찾을 수 없습니다.`);
         }
-        const { whiskey_text, whiskey_name }= updateContent
+        const { whiskey_text, whiskey_name } = updateContent
         const updatedRecord = await record.update({
-            whiskey_name, whiskey_text, whiskey_image : img
+            whiskey_name, w_info: whiskey_text, img
         });
         return updatedRecord;
     }
 
-    async delete(id: number){
+    async delete(id: number) {
         try {
-            const data = await this.infoLogic.destroy({where : { id }});
+            const data = await this.infoLogic.destroy({ where: { id } });
             return data;
         } catch (error) {
             throw new Error(`ID가 ${id}인 레코드를 찾을 수 없습니다.`);
