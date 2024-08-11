@@ -164,6 +164,10 @@ main()
 
 const tipBtn = document.getElementById("tipBtn")
 tipBtn.addEventListener("click", () => {
-  location.href = "http://127.0.0.1:5501/frontend/html/main.html"
+  location.href = "http://localhost:5501/frontend/html/main.html"
 })
 
+const infoBtn = document.getElementById("infoBtn");
+infoBtn.addEventListener('click', () => {
+  location.href = "http://localhost:5501/frontend/html/"
+})

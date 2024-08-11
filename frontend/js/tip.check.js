@@ -362,7 +362,7 @@ document.addEventListener("DOMContentLoaded", async (e) => {
   checkModify.addEventListener("click", async (e) => {
     const id = new URLSearchParams(location.search).get("id");
     if (tips.data.nick_name === tips.verifiedToken.nick_name) {
-      location.href = `http:/localhost:5501/frontend/html/whiskytip.modify.html?id=${id}`;
+      location.href = `http://localhost:5501/frontend/html/whiskytip.modify.html?id=${id}`;
     }
     // await axios.put(`http://localhost:3000/whisky/modify/${id}`)
     // location.href = `http:/localhost:5501/frontend/html/whiskytip.check.html?id=${id}`
@@ -389,7 +389,7 @@ document.addEventListener("DOMContentLoaded", async (e) => {
               "Content-Type": "multipart/form-data",
             },
           });
-          location.href = `http:/localhost:5501/frontend/html/whiskytip.snack.html`;
+          location.href = `http://localhost:5501/frontend/html/whiskytip.snack.html`;
         }
       }
     });
