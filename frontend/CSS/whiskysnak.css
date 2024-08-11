@@ -13,7 +13,7 @@ a {
 }
 
 #tipCategoryWrap {
-  margin: 10px;
+  margin: 20px;
 }
 
 #tipUploadWrap {
@@ -179,8 +179,4 @@ a {
 #searchButton>img {
   width: 30px;
   height: 30px;
-}
-
-.hide {
-  display: none;
 }
