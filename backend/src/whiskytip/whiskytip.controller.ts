@@ -94,7 +94,8 @@ export class WhiskytipController {
       // );
       //res.setHeader("content-type", "text/html");
       //return res.send(`<script>location.href='http://127.0.0.1:5501/frontend/html/whiskytip.snack.html?id=${result.dataValues.id}'</script>`)
-      return res.redirect(`http://127.0.0.1:5501/frontend/html/whiskytip.check.html?id=${result.dataValues.id}`);
+      // return res.redirect(`http://127.0.0.1:5501/frontend/html/whiskytip.check.html?id=${result.dataValues.id}`);
+      res.status(200).send(result);
     } catch (error) {
       console.log(error);
     }

@@ -1,5 +1,3 @@
-
-
 const snack = document.querySelector("#snack")
 const recipe = document.querySelector("#recipe")
 const info = document.querySelector("#info")
@@ -17,4 +15,3 @@ recipe.addEventListener("click", () => {
 info.addEventListener("click", () => [
   location.href = "http://localhost:5501/frontend/html/whiskytip.info.html"
 ])
-

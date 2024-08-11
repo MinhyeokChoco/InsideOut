@@ -1,8 +1,3 @@
-// const tipCorrecionBtn = document.querySelector("#tipCorrecionBtn")
-// const cancellationBtn = document.querySelector("#cancellationBtn")
-
-// document.addEventListener("DOMContentLoaded", () => {
-
 const tipCorrecionBtn = document.querySelector("#tipCorrecionBtn");
 const cancellationBtn = document.querySelector("#cancellationBtn");
 const uploadBox = document.querySelector("#uploadBox");
@@ -16,7 +11,6 @@ async function tokenReload() {
 }
 
 tokenReload();
-
 
 
 tipCorrecionBtn.addEventListener("click", async (e) => {
@@ -54,6 +48,7 @@ tipCorrecionBtn.addEventListener("click", async (e) => {
       const newID = response.data.id; // 서버에서 새로운 ID를 반환한다고 가정
       location.href = `http://localhost:5501/frontend/html/whiskytip.check.html?id=${newID}`;
       // location.href = "http://127.0.0.1:5501/frontend/html/whiskytip.snack.html"
+      // location.href = "http://localhost:5501/frontend/html/whiskytip.snack.html"
       return;
     } else {
       alert("업로드에 실패했습니다.");
@@ -68,6 +63,6 @@ tipCorrecionBtn.addEventListener("click", async (e) => {
 
 // 취소 버튼
 cancellationBtn.addEventListener("click", () => {
-  location.href = "http://127.0.0.1:5501/frontend/html/whiskytip.snack.html";
+  location.href = "http://localhost:5501/frontend/html/whiskytip.snack.html";
 });
 //});

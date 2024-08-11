@@ -9,14 +9,6 @@
   <link rel="stylesheet" href="../CSS/subMain.css">
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <title>snack</title>
-  <!-- 폰트 -->
-  <link href="https://fonts.cdnfonts.com/css/botera-tfe" rel="stylesheet">
-  <style>
-    @import url('https://fonts.cdnfonts.com/css/botera-tfe');
-  </style>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -25,20 +17,22 @@
     <div class="mainJokerFrame">
       <a href="" id="mainA" alt="Mythrill" target="_blank">
         <div class="card">
-          <div class="wrapper">Inside Out</div>
+          <div class="wrapper">
+            Inside Out
+          </div>
         </div>
       </a>
     </div>
     <div class="menuWindow">
       <nav id="textLine">
         <div id="horizontal-underline"></div>
-        <button id="tip">Tip </button>
+        <button id="tipBtn">Tip </button>
         <span>|</span>
-        <a href=".">Info</a>
+        <button id="butInfo">Info</button>
         <span>|</span>
-        <a href="#">Q&A</a>
+        <button id="butqa">Q&A</button>
         <span>|</span>
-        <button class="login-button">login</button>
+        <button class="login-button">Login</button>
       </nav>
     </div>
   </div>
@@ -56,7 +50,7 @@
       <div id="tipUploadWrap">
         <h2 class="tip_text neon"> <span>[Please upload various Snacks]</span>
         </h2>
-        <button id="tipBtn" class="hide">글 작성</button>
+        <button id="tipBtn">글 작성</button>
       </div>
       <div id="buttonBox">
         <div id="overlay"></div>

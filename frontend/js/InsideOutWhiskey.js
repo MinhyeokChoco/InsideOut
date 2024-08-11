@@ -1,5 +1,3 @@
-
-
 ///////////////////////// 중간 슬라이스 모션 주기 /////////////////////////
 /////// arousel_box : 중간 이미지들 잡고있는 박스  
 const carousel_box = document.querySelector("carousel_box");
@@ -180,4 +178,12 @@ butqa.addEventListener("click", (e) => {
 meetTip.addEventListener("click", (e) => {
   e.preventDefault();
   window.location.href = "main.html"
+})
+
+// insideout 클릭시 메인
+
+const wrapper = document.querySelector(".wrapper")
+
+wrapper.addEventListener("click", () => {
+  location.href = "http://localhost:5501/frontend/HTML/InsideOutWhiskey.html"
 })
