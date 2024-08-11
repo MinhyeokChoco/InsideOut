@@ -123,11 +123,11 @@ butqa.addEventListener("click", (e) => {
   window.location.href = "http://localhost:5501/frontend/views/QnA.html"
 })
 
-/*중간 맛팁사이트로 이동 */
-meetTip.addEventListener("click", (e) => {
-  e.preventDefault();
-  window.location.href = "main.html"
-})
+// /*중간 맛팁사이트로 이동 */
+// meetTip.addEventListener("click", (e) => {
+//   e.preventDefault();
+//   window.location.href = "main.html"
+// })
 
 // 이벤트 발생
 
