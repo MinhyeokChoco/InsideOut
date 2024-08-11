@@ -106,6 +106,29 @@ tipBtn.addEventListener("click", () => {
   location.href = "http://localhost:5501/frontend/html/whiskytip.upload.html";
 });
 
+const butInfo = document.querySelector("#butInfo");
+const butqa = document.querySelector("#butqa");
+const meetTip = document.querySelector("#meetTip");
+
+
+/*정보사이트로 이동 */
+butInfo.addEventListener("click", (e) => {
+  e.preventDefault();
+  window.location.href = "infoDetail.html"
+})
+
+/*Q&A이동 */
+butqa.addEventListener("click", (e) => {
+  e.preventDefault();
+  window.location.href = "http://localhost:5501/frontend/views/QnA.html"
+})
+
+/*중간 맛팁사이트로 이동 */
+meetTip.addEventListener("click", (e) => {
+  e.preventDefault();
+  window.location.href = "main.html"
+})
+
 // 이벤트 발생
 
 // const tipImg = document.querySelectorAll(".tipImg")
@@ -146,3 +169,4 @@ document.getElementById('overlay').addEventListener('click', function () {
   overlay.style.opacity = '0';
   overlay.style.visibility = 'hidden';
 });
+
