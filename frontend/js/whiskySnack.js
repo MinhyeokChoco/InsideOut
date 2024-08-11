@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           const id = el.dataset.set;
           el.onclick = (e) => {
             console.log(e.target.dataset["set"]);
-            location.href = `http://127.0.0.1:5501/frontend/html/whiskytip.check.html?id=${id}`;
+            location.href = `http://localhost:5501/frontend/html/whiskytip.check.html?id=${id}`;
           };
         })
       });
@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 const tipBtn = document.querySelector("#tipBtn");
 tipBtn.addEventListener("click", () => {
-  location.href = "http://127.0.0.1:5501/frontend/html/whiskytip.upload.html";
+  location.href = "http://localhost:5501/frontend/html/whiskytip.upload.html";
 });
 
 // 이벤트 발생
