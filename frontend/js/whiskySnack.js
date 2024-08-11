@@ -170,3 +170,11 @@ document.getElementById('overlay').addEventListener('click', function () {
   overlay.style.visibility = 'hidden';
 });
 
+
+// insideout 클릭시 메인
+
+const wrapper = document.querySelector(".wrapper")
+
+wrapper.addEventListener("click", () => {
+  location.href = "http://localhost:5501/frontend/HTML/InsideOutWhiskey.html"
+})
