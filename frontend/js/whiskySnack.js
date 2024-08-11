@@ -174,7 +174,9 @@ document.getElementById('overlay').addEventListener('click', function () {
 // insideout 클릭시 메인
 
 const wrapper = document.querySelector(".wrapper")
+console.log(wrapper);
 
 wrapper.addEventListener("click", () => {
+  console.log("123")
   location.href = "http://localhost:5501/frontend/HTML/InsideOutWhiskey.html"
 })
