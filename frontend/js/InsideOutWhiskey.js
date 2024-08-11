@@ -1,15 +1,3 @@
-//////// why so serious?? 글씨 한글자씩나오게하는 모션 /////////
-// const introText = document.querySelectorAll("span");
-
-// window.onload = () => {
-//   let timer = 100;
-//   introText.forEach((item) => {
-//     item.style.animation = `fade 500ms ${(timer += 50)}ms forwards`;
-//   });
-// };
-////////////// 여기까지 한글자씩나오게하는 글씨 모션 ///////////////////
-
-
 ///////////////////////// 중간 슬라이스 모션 주기 /////////////////////////
 /////// arousel_box : 중간 이미지들 잡고있는 박스  
 const carousel_box = document.querySelector("carousel_box");
@@ -138,10 +126,11 @@ async function main() {
       loginButton.classList.add('hide');
       const textBox = document.getElementById('textLine');
       const textLine = document.createElement('div');
+      textLine.classList.add('nickName')
       const logOut = document.createElement('button');
       logOut.innerHTML = '로그아웃'
-      textBox.append(textLine);
       textBox.append(logOut);
+      textBox.append(textLine);
       textLine.innerHTML = response.data.nick_name;
 
       logOut.onclick = async () => {
@@ -167,7 +156,26 @@ tipBtn.addEventListener("click", () => {
   location.href = "http://localhost:5501/frontend/html/main.html"
 })
 
-const infoBtn = document.getElementById("infoBtn");
-infoBtn.addEventListener('click', () => {
-  location.href = "http://localhost:5501/frontend/html/"
+
+const butInfo = document.querySelector("#butInfo");
+const butqa = document.querySelector("#butqa");
+const meetTip = document.querySelector("#meetTip");
+
+
+/*정보사이트로 이동 */
+butInfo.addEventListener("click", (e) => {
+  e.preventDefault();
+  window.location.href = "infoDetail.html"
+})
+
+/*Q&A이동 */
+butqa.addEventListener("click", (e) => {
+  e.preventDefault();
+  window.location.href = "http://localhost:5501/frontend/views/QnA.html"
+})
+
+/*중간 맛팁사이트로 이동 */
+meetTip.addEventListener("click", (e) => {
+  e.preventDefault();
+  window.location.href = "main.html"
 })
