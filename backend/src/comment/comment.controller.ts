@@ -27,7 +27,7 @@ export class CommentController {
   async create(@Body() CreateCmt: CreateCommentDTO, @Res() res: Response) {
     // console.log(CreateCmt.qna_id)
     await this.cmtService.create(CreateCmt);
-    res.redirect(`http://127.0.0.1:5501/frontend/views/detail.html?id=${CreateCmt.qna_id}`);
+    res.redirect(`http://localhost/frontend/views/detail.html?id=${CreateCmt.qna_id}`);
   }
 
   // 댓글 수정

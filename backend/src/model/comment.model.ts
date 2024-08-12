@@ -3,7 +3,6 @@ import { BelongsTo, Column, DataType, ForeignKey, HasMany, Model, Table } from "
 import { QnA } from "./qn-a.model";
 import { Ccomment } from "./ccomment.model";
 import { UserSignUp } from "src/login/model/login.model";
-UserSignUp
 
 @Table({
     timestamps: true,
