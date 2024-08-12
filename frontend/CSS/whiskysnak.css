@@ -40,8 +40,6 @@ a {
 }
 
 #tipBtn {
-  width: 80px;
-  height: 35px;
   border: none;
   border-radius: 5px;
   margin-left: 20px;
@@ -148,8 +146,6 @@ a {
   margin-left: 20px;
   /* 버튼과 간격을 두기 위해 추가 */
 }
-
-
 
 #searchInput {
   width: 0;

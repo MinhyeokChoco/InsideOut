@@ -103,6 +103,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 const tipBtn = document.querySelector("#tipBtn");
 tipBtn.addEventListener("click", () => {
+  console.log(3);
   location.href = "http://localhost:5501/frontend/html/whiskytip.upload.html";
 });
 

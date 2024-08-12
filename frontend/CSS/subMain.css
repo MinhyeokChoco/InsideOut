@@ -72,12 +72,12 @@ ul li {
 
 /*상단 메뉴창*/
 
-nav a {
+/* nav a {
   text-decoration: none;
   color: black;
   margin: 1em;
   font-size: 2em;
-}
+} */
 
 nav:first-child {
   display: flex;
@@ -243,7 +243,10 @@ nav:first-child {
 
 #firstMainFrame {
   width: 100%;
-  display: contents;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #carousel_box {
