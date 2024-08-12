@@ -1,5 +1,4 @@
 import { BelongsTo, Column, DataType, ForeignKey, HasMany, Model, Table } from "sequelize-typescript";
-// import { User } from "./user.model";
 import { QnA } from "./qn-a.model";
 import { Ccomment } from "./ccomment.model";
 import { UserSignUp } from "src/login/model/login.model";
@@ -30,7 +29,7 @@ export class Comment extends Model {
         foreignKey: 'nick_name',
         targetKey: 'nick_name'
     })
-    Users: UserSignUp;
+    userDB: UserSignUp;
 
     @ForeignKey(() => QnA)
     @Column

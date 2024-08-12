@@ -1,6 +1,5 @@
 import { Model, Column, Table, DataType, HasMany, ForeignKey, BelongsTo } from "sequelize-typescript";
 import { Comment } from "./comment.model";
-import { User } from "./user.model";
 import { UserSignUp } from "src/login/model/login.model";
 
 
@@ -36,5 +35,5 @@ export class QnA extends Model {
         foreignKey: 'nick_name',
         targetKey: 'nick_name'
     })
-    Users: UserSignUp;
+    userDB: UserSignUp;
 }

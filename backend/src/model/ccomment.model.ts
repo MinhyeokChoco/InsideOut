@@ -23,7 +23,7 @@ export class Ccomment extends Model {
         foreignKey: 'nick_name',
         targetKey: 'nick_name'
     })
-    Users: UserSignUp;
+    userDB: UserSignUp;
 
     @ForeignKey(() => Comment)
     @Column

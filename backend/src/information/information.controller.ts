@@ -19,16 +19,17 @@ export class InformationController {
 
   @Get() // 메인페이지
   async findAll(@Req() req: Request): Promise<Insideoutinfo[]> {
-
-    const result = this.insideOutService.verify(req.cookies['token']);
+    console.log("1234");
     return this.informationService.findAll();
   }
 
   @Get('token') // 메인페이지
   async findToken(@Req() req: Request, @Res() res: Response) {
-
-    const result = this.insideOutService.verify(req.cookies['token']);
-    res.send(result);
+    if (req.cookies['token']) {
+      const verifiedToken = this.insideOutService.verify(req.cookies['token']);
+      res.send(verifiedToken);
+    }
+    res.send();
   }
 
   @Get('uploads/:filename')

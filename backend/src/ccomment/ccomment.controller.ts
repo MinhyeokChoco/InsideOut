@@ -1,11 +1,14 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put, Query, Res } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put, Query, Req, Res, UnauthorizedException } from '@nestjs/common';
 import { CcommentService } from './ccomment.service';
-import { Response } from 'express';
+import { Request, Response } from 'express';
 import { CreateCcommentDTO, DeleteCcommentDTO, UpdateCcommentDTO } from 'src/dto/ccomment.dto';
+import { InsideOutInfoService } from 'src/inside-out-info/inside-out-info.service';
 
 @Controller('ccomment')
 export class CcommentController {
-  constructor(private readonly ccmtService: CcommentService) { }
+  constructor(private readonly ccmtService: CcommentService,
+    private readonly insideOutInfoService: InsideOutInfoService
+  ) { }
 
   // 대댓글 전체 조회
   @Get()
@@ -25,12 +28,14 @@ export class CcommentController {
 
 
   // 대댓글 작성
-  @Post("/create")
-  async create(@Body() CreateCcmt: CreateCcommentDTO, @Res() res: Response, @Query("id") index: number) {
+  @Post("create")
+  async create(@Body() CreateCcmt: CreateCcommentDTO, @Res() res: Response, @Req() req: Request, @Query("id") index: number) {
     console.log(CreateCcmt);
-    const data = await this.ccmtService.create(CreateCcmt);
+    const verifiedToken = this.insideOutInfoService.verify(req.cookies['token']);
+    const data = await this.ccmtService.create(CreateCcmt, verifiedToken.nick_name);
     console.log(data);
-    return res.redirect(`http://127.0.0.1:5501/frontend/views/detail.html?id=${index}`);
+    res.status(201).send();
+    // res.redirect(`http://localhost:5501/frontend/views/detail.html?id=${index}`);
   }
 
   // 대댓글 상세 조회
@@ -41,17 +46,24 @@ export class CcommentController {
 
   // 대댓글 수정
   @Put(":id")
-  async update(@Body() updateCcmt: UpdateCcommentDTO, @Param("id") id: number) {
+  async update(@Body() updateCcmt: UpdateCcommentDTO, @Param("id") id: number, @Req() req: Request, @Res() res: Response) {
     console.log(updateCcmt);
+    if (!req.cookies['token']) {
+      throw new UnauthorizedException();
+    }
     const data = await this.ccmtService.update(updateCcmt, id);
-    console.log(data, id)
-    return data;
+    console.log(data)
+    res.send(data);
   }
 
   // 대댓글 삭제
   @Delete(":id")
-  async destroy(@Param("id") deleteCcmt: DeleteCcommentDTO) {
+  async destroy(@Param("id") deleteCcmt: DeleteCcommentDTO, @Req() req: Request, @Res() res: Response) {
+    if (!req.cookies['token']) {
+      throw new UnauthorizedException();
+    }
     console.log(deleteCcmt);
-    return await this.ccmtService.destroy(deleteCcmt);
+    await this.ccmtService.destroy(deleteCcmt);
+    res.send();
   }
 }

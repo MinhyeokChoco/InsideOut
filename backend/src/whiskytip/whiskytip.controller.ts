@@ -132,10 +132,13 @@ export class WhiskytipController {
   // js에서가 axios가 아닌 HTML/ form으로 받음
   @Get('check/:id')
   async getcheck(@Req() req: Request, @Res() res: Response, @Param('id', ParseIntPipe) id: number) {
-    const verifiedToken = this.InsideOutInfo.verify(req.cookies['token']);
+    let test = null;
+    if (req.cookies['token']) {
+      const verifiedToken = this.InsideOutInfo.verify(req.cookies['token']);
+      test = verifiedToken
+    }
     const data = await this.whiskytipService.findId(id);
-    console.log(verifiedToken, 'dataa', data)
-    res.json({ verifiedToken, data })
+    res.json({ data, test })
 
 
     // res.json(tips);

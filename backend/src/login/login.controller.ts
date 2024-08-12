@@ -45,7 +45,7 @@ export class LoginController {
     const { id } = await this.loginService.create(signUpUser)
     const { uid, upw, nick_name } = req.body
     console.log(uid, upw, nick_name)
-    return res.redirect('http://127.0.0.1:5501/frontend/login.html')
+    return res.redirect('http://localhost:5501/frontend/login.html')
   }
 
   @Get('kakao')

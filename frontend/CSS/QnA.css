@@ -9,6 +9,8 @@ body {
     height: 100px;
     display: flex;
     justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 .btnWrap {
@@ -219,4 +221,8 @@ body {
 
 .hide {
     display: none;
+}
+
+#firstMainFrame {
+    background-color: #202020;
 }

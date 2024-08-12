@@ -18,7 +18,6 @@ import { LoginService } from './login/login.service';
 import { TokenGuard } from './login/guard/login.guard';
 import { LoginController } from './login/login.controller';
 import { JwtModule, JwtService } from '@nestjs/jwt';
-import { UserModule } from './user/user.module';
 import { ConfigModule } from '@nestjs/config';
 import { UserSignUp } from './login/model/login.model';
 import { whiskyTip } from './whiskytip/model/whisky_Tip.model';
@@ -44,7 +43,7 @@ import { Ccomment } from './model/ccomment.model';
     sync: { force: false }, // true 시 초기화
     models: [UserSignUp, whiskyTip, whiskyTipComment, whiskyTipCcomment, QnA, Comment, Ccomment],
   }), LoginModule, ConfigModule.forRoot({ isGlobal: true }),
-    WhiskytipModule, QnAModule, CommentModule, CcommentModule, WhiskytipModule,
+    InsideOutInfoModule, WhiskytipModule, QnAModule, CommentModule, CcommentModule,
   MulterModule.register({
     dest: './uploads',
   }),

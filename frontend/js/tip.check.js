@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", async (e) => {
   let response = await axios.get(`http://localhost:3000/whisky/check/${id}`, {
     withCredentials: true
   });
+
   let tips = await response.data;
   console.log(response)
   console.log(tips);
@@ -395,4 +396,3 @@ document.addEventListener("DOMContentLoaded", async (e) => {
     });
   });
 });
-

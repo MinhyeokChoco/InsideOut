@@ -48,6 +48,15 @@ a {
   cursor: pointer;
 }
 
+#tip {
+  border: none;
+  border-radius: 5px;
+  margin-left: 20px;
+  background-color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 .neon {
   color: #fff;
   text-shadow: 0 0 20px #ff005b;

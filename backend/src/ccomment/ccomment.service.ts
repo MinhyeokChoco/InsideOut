@@ -9,10 +9,10 @@ export class CcommentService {
         @InjectModel(Ccomment) private readonly CcmtModel: typeof Ccomment) { }
 
     // 대댓글 작성
-    async create(createCcmt: CreateCcommentDTO) {
+    async create(createCcmt: CreateCcommentDTO, name: string) {
         const { qna_com_comment, nick_name, qna_comment_id } = createCcmt
         return await this.CcmtModel.create({
-            qna_com_comment, nick_name, qna_comment_id
+            qna_com_comment, nick_name: name, qna_comment_id
         })
     }
 

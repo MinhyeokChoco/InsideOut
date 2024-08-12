@@ -21,7 +21,7 @@ async function get(page = 1, search = '') {
         renderQnAList(results); // renderQnAList 함수 호출, items 매개변수에 추출한 results를 인자로 전달
         createPagination(totalPages); // createPagination 함수 호출, totalPages를 인자로 전달
 
-        if (response.data.verifiedToken) {
+        if (response.data.token) {
             createBtn.classList.remove('hide');
         }
 
@@ -136,15 +136,88 @@ createBtn.addEventListener('click', () => { // 문의 글 작성 클릭 시
     location.href = './create.html'; // create 페이지로 이동
 });
 
-const tip = document.getElementById("tip")
-tip.addEventListener("click", () => {
-    location.href = "http://localhost:5501/frontend/html/main.html"
-})
-
-// insideout 클릭시 메인
+// insideout 클릭시 메인 이동
 
 const wrapper = document.querySelector(".wrapper")
 
 wrapper.addEventListener("click", () => {
+    console.log("1234")
     location.href = "http://localhost:5501/frontend/HTML/InsideOutWhiskey.html"
 })
+
+// tip 클릭 시 이동
+
+const tip = document.getElementById('tipBtn')
+tip.addEventListener('click', () => {
+    location.href = "http://localhost:5501/frontend/html/main.html"
+})
+
+// info 클릭 시 이동
+
+const info = document.getElementById('butInfo')
+info.addEventListener('click', () => {
+    location.href = "http://localhost:5501/frontend/HTML/infoDetail.html"
+})
+
+const loginButton = document.querySelector('.login-button');
+
+loginButton.addEventListener('click', () => {
+    var popupX = (document.body.offsetWidth / 2) - (700 / 2);
+    var popupY = (window.screen.height / 2) - (500 / 2);
+    var popupWindow = window.open('http://localhost:5501/frontend/login.html', '', 'status=no, height=500, width=700, left=' + popupX + ', top=' + popupY);
+
+    // message 이벤트 리스너가 중복되지 않도록 하는 함수
+    const handleMessage = async (event) => {
+        if (event.data.type === 'popupClosed') {
+            window.location.reload();
+            // 새창 종료 후 수행할 작업을 여기에 추가
+            window.removeEventListener('message', handleMessage);
+        }
+    };
+
+    // message 이벤트 리스너 추가
+    window.addEventListener('message', handleMessage);
+});
+
+
+// 로그인 후 쿠키 확인 및 처리
+async function main() {
+    const accessToken = document.cookie.split('; ').find(row => row.startsWith('token='));
+    // if (accessToken) {
+    //   console.log('Token found:', accessToken.split('=')[1]);
+    //   axios.defaults.headers.common['Authorization'] = accessToken.split('=')[1];
+    //   // 쿠키가 있으면 필요한 작업을 수행합니다.
+    // } else {
+    //   console.log('Token not found');
+    // }
+    try {
+        // axios.defaults.authorazation = accessToken.split('=')[1]
+        const response = await axios.get('http://localhost:3000/insideOutInfo', { withCredentials: true });
+        if (response) {
+            loginButton.classList.add('hide');
+            const textBox = document.getElementById('textLine');
+            const textLine = document.createElement('div');
+            textLine.classList.add('nickName')
+            const logOut = document.createElement('button');
+            logOut.innerHTML = '로그아웃'
+            textBox.append(logOut);
+            textBox.append(textLine);
+            textLine.innerHTML = response.data.nick_name;
+
+            logOut.onclick = async () => {
+                const deleteCookie = await axios.post('http://localhost:3000/insideOutInfo/logout', {}, { withCredentials: true });
+                console.log(deleteCookie.data.message)
+                window.location.reload();
+            }
+        }
+    } catch (error) {
+        if (!error.response) {
+            // network error
+            this.errorStatus = 'Error: Network Error';
+        } else {
+            this.errorStatus = error.response.data.message;
+        }
+    }
+}
+
+main()

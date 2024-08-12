@@ -30,7 +30,7 @@ const detailData = async function detail() {
 
     console.log(data.data);
 
-    if (data.data.verifiedToken.nick_name === data.data.data.nick_name) {
+    if (data.data.token.nick_name === data.data.data.nick_name) {
         modifyBtn.classList.remove('hide')
         deleteBtn.classList.remove('hide');
     }

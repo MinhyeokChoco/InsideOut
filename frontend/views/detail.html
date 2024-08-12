@@ -37,14 +37,12 @@
     <div id="commentContainer">
         <div class="commentWrap">
             <form id="commentForm" action="http://127.0.0.1:3000/comment/create" method="post">
-                <!-- 임시 작성자 -->
-                <input type="text" name="nick_name" value="god_kkh" hidden>
                 <!-- 댓글 내용 -->
                 <textarea name="qna_comment" id="comment_Content" placeholder="댓글을 입력해주세요." cols="50"
                     rows="5"></textarea>
                 <!-- 댓글 작성할 글 번호 -->
                 <input type="text" name="qna_id" id="QnA_ID" hidden>
-                <button id="commentAddBtn">댓글 작성</button>
+                <button id="commentAddBtn" type="button" onclick="token()">댓글 작성</button>
             </form>
         </div>
         <!-- 댓글 보여줄 공간 -->

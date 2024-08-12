@@ -8,7 +8,7 @@ import { TokenGuard } from './login/guard/login.guard';
 export class AppController {
   constructor(private readonly appService: AppService) { }
 
-  // @UseGuards(TokenGuard)
+  @UseGuards(TokenGuard)
 
   @Get()
   getHello() {

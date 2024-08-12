@@ -62,6 +62,4 @@ export class UserSignUp extends Model {
         foreignKey: "nick_name"
     })
     Ccomments: Ccomment[];
-
-
 }

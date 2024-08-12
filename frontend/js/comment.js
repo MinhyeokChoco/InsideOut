@@ -4,7 +4,9 @@ async function comment() {
         // const listParam = parseInt(_listIndex);
         // console.log(listParam);
 
-        const commentData = await axios.get(`http://127.0.0.1:3000/comment/comments?index=${_listIndex}`); // QnA 게시글 목록 중에서 id 값을 통해 원하는 상세 페이지에 데이터를 받아옴, data에 할당
+        const commentData = await axios.get(`http://localhost:3000/comment/comments?index=${_listIndex}`, {
+            withCredentials: true
+        }); // QnA 게시글 목록 중에서 id 값을 통해 원하는 상세 페이지에 데이터를 받아옴, data에 할당
         console.log(_listIndex);
         const QnA_id = document.getElementById('QnA_ID'); // 글번호
         QnA_id.value = _listIndex; // 댓글 작성한 글의 글번호
@@ -70,7 +72,7 @@ async function comment() {
                     try { // 정상적으로 작동하면
                         const value = { qna_comment: _input.value } // 댓글에 입력창의 값을 할당
 
-                        const data = await axios.put(`http://127.0.0.1:3000/comment/${item.id}`, value); // id 값을 통해 수정할 데이터를 서버에 PUT 요청으로 전송하여 수정
+                        const data = await axios.put(`http://localhost:3000/comment/${item.id}`, value, { withCredentials: true }); // id 값을 통해 수정할 데이터를 서버에 PUT 요청으로 전송하여 수정
                         // console.log("data", data)
 
                         if (data.status === 200) { // 성공하면
@@ -87,7 +89,7 @@ async function comment() {
 
             deleteBtn.addEventListener('click', async () => { // 삭제 버튼 클릭 시
                 try {
-                    const data = await axios.delete(`http://127.0.0.1:3000/comment/${item.id}`) // id 값을 통해 삭제할 데이터를 서버에 Delete 요청으로 전송하여 삭제
+                    const data = await axios.delete(`http://localhost:3000/comment/${item.id}`, { withCredentials: true }) // id 값을 통해 삭제할 데이터를 서버에 Delete 요청으로 전송하여 삭제
                     // console.log(data);
                     location.reload(); // 삭제 후 페이지 새로고침
                 } catch (error) {
@@ -154,7 +156,7 @@ async function comment() {
 
                 cdeleteBtn.addEventListener('click', async () => {
                     try {
-                        const data = await axios.delete(`http://127.0.0.1:3000/ccomment/${citem.id}`);
+                        const data = await axios.delete(`http://localhost:3000/ccomment/${citem.id}`);
                         console.log("삭제된 데이터:", data);
                         location.reload();
                     } catch (error) {
@@ -170,11 +172,10 @@ async function comment() {
 
                 const div = comcomBtn.parentElement;
                 div.innerHTML = `<form id="comComForm" action="http://127.0.0.1:3000/ccomment/create?id=${_listIndex}" method="post">
-                                <input type="text" name="nick_name" value="god_kkh" hidden>
                                 <div class="help">
                                 <label for="">대댓글 작성</label>
                                 <textarea name="qna_com_comment" id="comComment_Content" placeholder="대댓글을 입력해주세요." cols="30" rows="1"></textarea>
-                                <button id="comCommentAddBtn">대댓글 작성</button>
+                                <button id="comCommentAddBtn" type="button" onclick="ccomToken()">대댓글 작성</button>
                                 <input type="text" name="qna_comment_id" id="QnA_Comment_ID" value="${item.id}" hidden>
                                 </div>
                                 </form>`;
@@ -186,3 +187,30 @@ async function comment() {
 }
 
 comment();
+
+async function token() {
+    try {
+        const commentForm = document.querySelector('#commentForm');
+        const { qna_comment, qna_id } = commentForm;
+        const _listIndex = new URLSearchParams(location.search).get("id");
+        const data = { qna_comment: qna_comment.value, qna_id: _listIndex };
+        const response = await axios.post(`http://localhost:3000/comment/create`, data, { withCredentials: true });
+        console.log(response);
+        if (response.status === 200 || response.status === 201) {
+            location.reload();
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+async function ccomToken() {
+    const ccommentForm = document.querySelector('#comComForm');
+    const { qna_com_comment, qna_comment_id } = ccommentForm;
+
+    const data = { qna_com_comment: qna_com_comment.value, qna_comment_id: qna_comment_id.value };
+    const response = await axios.post(`http://localhost:3000/ccomment/create`, data, { withCredentials: true });
+    if (response.status === 200 || response.status === 201) {
+        location.reload();
+    }
+}

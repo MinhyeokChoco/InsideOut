@@ -21,41 +21,47 @@ export class QnAController {
     @Query('limit') limit: number = 10,
     @Query('search') search: string = '') {
 
-
-    const verifiedToken = this.insideOutInfoService.verify(req.cookies['token']);
-    console.log(verifiedToken)
-
     const { results, totalPages } = await this.qnaService.findAndCountAll({
       page, limit, search,
     })
 
-    // 응답 데이터 구조 확인
-    res.json({
-      verifiedToken, results, totalPages,
-    });
-  }
+    let token = null;
+    if (req.cookies['token']) {
+      const verifiedToken = this.insideOutInfoService.verify(req.cookies['token']);
+      console.log(verifiedToken);
+      // res.write(verifiedToken);
+      token = verifiedToken
+    }
 
-  @Get()
-  async qnaLoginPage(
-    // page 수, limit 제한, search 검색
-    @Res() res: Response,
-    @Req() req: Request,
-    @Query('page') page: number = 1,
-    @Query('limit') limit: number = 10,
-    @Query('search') search: string = '') {
-
-
-    const verifiedToken = this.insideOutInfoService.verify(req.cookies['token']);
-
-    const { results, totalPages } = await this.qnaService.findAndCountAll({
-      page, limit, search,
-    })
 
     // 응답 데이터 구조 확인
     res.json({
-      verifiedToken, results, totalPages,
+      token, results, totalPages
+
     });
   }
+
+  // @Get()
+  // async qnaLoginPage(
+  //   // page 수, limit 제한, search 검색
+  //   @Res() res: Response,
+  //   @Req() req: Request,
+  //   @Query('page') page: number = 1,
+  //   @Query('limit') limit: number = 10,
+  //   @Query('search') search: string = '') {
+
+
+  //   const verifiedToken = this.insideOutInfoService.verify(req.cookies['token']);
+
+  //   const { results, totalPages } = await this.qnaService.findAndCountAll({
+  //     page, limit, search,
+  //   })
+
+  //   // 응답 데이터 구조 확인
+  //   res.json({
+  //     verifiedToken, results, totalPages,
+  //   });
+  // }
 
   // 글 작성
   @Post("/create")
@@ -69,9 +75,16 @@ export class QnAController {
   // 글 상세 조회
   @Get("detail/:id")
   async detail(@Param("id") id: number, @Req() req: Request, @Res() res: Response) {
+    let token = null;
+    if (req.cookies['token']) {
+      const verifiedToken = this.insideOutInfoService.verify(req.cookies['token']);
+      console.log(verifiedToken);
+      // res.write(verifiedToken);
+      token = verifiedToken
+    }
+
     const data = await this.qnaService.findOne(id);
-    const verifiedToken = this.insideOutInfoService.verify(req.cookies['token']);
-    res.json({ data, verifiedToken });
+    res.json({ data, token });
   }
 
   // 글 수정

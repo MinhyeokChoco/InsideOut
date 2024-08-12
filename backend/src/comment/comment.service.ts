@@ -9,10 +9,12 @@ export class CommentService {
         @InjectModel(Comment) private readonly CmtModel: typeof Comment) { }
 
     // 댓글 작성
-    async create(createCmt: CreateCommentDTO) {
+    async create(createCmt: CreateCommentDTO, name: string) {
         const { qna_comment, nick_name, qna_id } = createCmt
+        console.log(nick_name);
+        console.log(qna_comment);
         return await this.CmtModel.create({
-            qna_comment, nick_name, qna_id
+            qna_comment, nick_name: name, qna_id
         })
     }
 
