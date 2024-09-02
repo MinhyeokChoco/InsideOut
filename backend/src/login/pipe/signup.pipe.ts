@@ -1,10 +1,10 @@
 import { ArgumentMetadata, BadRequestException, PipeTransform } from "@nestjs/common";
 import { ZodSchema } from "zod";
 
-export class SignUpPipe implements PipeTransform{
-    name : string = null
-    constructor(name : string){
-        this.name = name;
+export class SignUpPipe implements PipeTransform {
+    length: string = null
+    constructor(length: string) {
+        this.length = length;
     }
     transform(value: any, metadata: ArgumentMetadata) {
 
@@ -14,22 +14,22 @@ export class SignUpPipe implements PipeTransform{
 
         const { uid, upw } = value;
 
-        if(!uid || !upw){
+        if (!uid || !upw) {
             throw new BadRequestException('아이디 또는 비밀번호를 잘 입력해줘');
         }
         if (uid.length < 2 || uid.length > 15) { // Adjust length as necessary
             throw new BadRequestException(`UID는 최소 2자, 최대 15자까지 써줘`);
         }
 
-        if(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]/.test(upw)){
+        if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]/.test(upw)) {
             console.log('비밀번호 한글 제외, 영대소문자,숫자,특수문자 1개이상 포함')
-            if((upw.length >= (this.name || 8)) && (upw.length <= (this.name || 15))){
+            if ((upw.length >= (this.length || 8)) && (upw.length <= (this.length || 15))) {
                 console.log('비밀번호 값이 8자 이상, 15자 이하로 잘 적었습니다.')
                 return value
-            }else{
+            } else {
                 throw new BadRequestException(`비밀번호를 최소 8자이상, 최대 15자까지 써줘`);
             }
-        }else{
+        } else {
             throw new BadRequestException(`비밀번호를 한글제외, 영대소문자,숫자,특수문자 포함 1개 이상으로 써줘`);
         }
     }
@@ -80,7 +80,7 @@ export class LoginPipe implements PipeTransform {
 export class UserLoginObjectPipe implements PipeTransform {
     // 객체의 형태를 생성자에서 받고
     // ZodSchema == z.object로 만든 객체가 맞는지 타입 검증
-    constructor(private userDTOBody : ZodSchema){
+    constructor(private userDTOBody: ZodSchema) {
 
     }
     transform(value: any, metadata: ArgumentMetadata) {
