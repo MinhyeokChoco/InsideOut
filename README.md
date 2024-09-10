@@ -40,7 +40,9 @@
 ## 주요 페이지
 
 - 페이지 예시
+
 ![페이지예시](https://github.com/user-attachments/assets/9dfb1de3-a959-499b-871a-6a12f81cce5f)
+![InsideOut예시](https://github.com/user-attachments/assets/3ee44f3e-f837-4315-8d79-406c5c48ae22)
 
 - **MainPage**
     - 작성한 게시글들을 볼 수 있는 화면
@@ -48,8 +50,12 @@
     - 검색 기능으로 원하는 게시글 검색 가능
     - 페이지네이션으로 많은 게시글들을 편하게 볼 수 있게 구현
 
+![MainPage](https://github.com/user-attachments/assets/83c4d1dd-c029-4535-bad3-dd457641e2e4)
+
 - **CreatePage**
     - 게시글 작성 할 수 있는 화면 구현
+
+![CreatePage](https://github.com/user-attachments/assets/5935a3a8-3f2c-4f2b-ae84-ea041ebe6278)
 
 - **DetailPage**
     - 게시글의 상세 내용을 볼 수 있는 화면
@@ -57,14 +63,17 @@
     - 작성한 댓글에 추가적인 대댓글을 작성, 수정, 삭제 할 수 있는 기능 구현
     - 입력한 댓글과 대댓글들을 볼 수 있는 댓글 리스트 구현
 
+![DetailPage](https://github.com/user-attachments/assets/724ce044-2af9-41a8-bae0-3d1d8109bc49)
+![Comment](https://github.com/user-attachments/assets/7c22aa5c-cf38-4696-a0ce-41ea757a74e9)
+
 - **UpdatePage**
     - 작성했던 게시글을 수정할 수 있는 화면
 
+![UpdatePage](https://github.com/user-attachments/assets/685838e9-4aeb-4fa1-91aa-1b3ca04a0fba)
 
-<!-- 민지누나 페이지 캡쳐본 받기 -->
-<!-- 종혁이한테 GIF 사이트 받기 -->
+---
 
-- DB 구성
+## DB 구성
 ![DB](https://github.com/user-attachments/assets/6654339a-2699-4e91-a02b-916cacf4962e)
 
 - 테이블명 설명<br>
