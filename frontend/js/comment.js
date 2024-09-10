@@ -106,6 +106,7 @@ async function comment() {
             comWrap.appendChild(ccomContainer);
 
             ccomData.data.forEach(citem => { // 대댓글 데이터 순회
+                console.log(citem);
                 const ccomWrap = document.createElement('div');
                 const ccomdiv = document.createElement('div');
                 const cbtndiv = document.createElement('div');
@@ -156,7 +157,7 @@ async function comment() {
 
                 cdeleteBtn.addEventListener('click', async () => {
                     try {
-                        const data = await axios.delete(`http://localhost:3000/ccomment/${citem.id}`);
+                        const data = await axios.delete(`http://localhost:3000/ccomment/${citem.id}`, { withCredentials: true });
                         console.log("삭제된 데이터:", data);
                         location.reload();
                     } catch (error) {

@@ -59,6 +59,7 @@ export class CcommentController {
   // 대댓글 삭제
   @Delete(":id")
   async destroy(@Param("id") deleteCcmt: DeleteCcommentDTO, @Req() req: Request, @Res() res: Response) {
+    console.log(req.cookies);
     if (!req.cookies['token']) {
       throw new UnauthorizedException();
     }
