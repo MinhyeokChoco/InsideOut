@@ -7,11 +7,11 @@ const updateBtn = document.getElementById('updateBtn'); // 수정 버튼
 const backBtn = document.getElementById('backBtn'); // 뒤로가기 버튼
 
 async function get() {
-    const data = await axios.get(`http://127.0.0.1:3000/qn-a/detail/${listIndex}`); // QnA 게시글 목록 중에서 id 값을 통해 원하는 상세 페이지에 데이터를 받아옴, data에 할당
-    console.log(data.data);
-    console.log(data.data.qna_title);
-    title.placeholder = data.data.qna_title // 제목을 작성하는 textarea에 전의 내용을 placeholder로 표시
-    content.placeholder = data.data.qna_content // 내용을 작성하는 textarea에 전의 내용을 placeholder로 표시
+    const { data: { data: data } } = await axios.get(`http://127.0.0.1:3000/qn-a/detail/${listIndex}`); // QnA 게시글 목록 중에서 id 값을 통해 원하는 상세 페이지에 데이터를 받아옴, data에 할당
+    console.log(data);
+    console.log(data.qna_title);
+    title.placeholder = data.qna_title // 제목을 작성하는 textarea에 전의 내용을 placeholder로 표시
+    content.placeholder = data.qna_content // 내용을 작성하는 textarea에 전의 내용을 placeholder로 표시
 }
 get();
 
@@ -23,7 +23,7 @@ updateBtn.addEventListener('click', async () => { // 수정 버튼에 클릭 이
     }
     const data = await axios.put(`http://127.0.0.1:3000/qn-a/${listIndex}`, value); // id 값을 통해 수정할 데이터를 서버에 PUT 요청으로 전송하여 수정
     if (data.data > 0) { // 수정에 성공하면 수정 페이지에서 상세 페이지로 이동
-        location.href = `http://127.0.0.1:5501/frontend/views/detail.html?id=${listIndex}`;
+        location.href = `http://localhost:5501/frontend/views/detail.html?id=${listIndex}`;
     }
 })
 
