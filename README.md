@@ -42,8 +42,7 @@
 - 페이지 예시
 
 <div align="center"><img src="https://github.com/user-attachments/assets/9dfb1de3-a959-499b-871a-6a12f81cce5f" alt="페이지예시" /> </div>
-
-![InsideOut예시](https://github.com/user-attachments/assets/3ee44f3e-f837-4315-8d79-406c5c48ae22)
+<div align="center"><img src="https://github.com/user-attachments/assets/3ee44f3e-f837-4315-8d79-406c5c48ae22" alt="InsideOut예시" /> </div>
 
 - **MainPage**
     - 작성한 게시글들을 볼 수 있는 화면
