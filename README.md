@@ -20,9 +20,11 @@
 
 ## 개요
 
+<a href="https://www.notion.so/DB-671252724f1b4f4e98e6d1a705703e3a"><img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white"></a> 
+
 ### 기간 : 2024.07.18 ~ 2024.08.05
 
-### 개발자 : <a href="https://www.notion.so/DB-671252724f1b4f4e98e6d1a705703e3a"><img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white"></a> MinHyeok 본인 외 3명
+### 개발자 : MinHyeok 본인 외 3명
 
 ### 기술 스택 :
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
